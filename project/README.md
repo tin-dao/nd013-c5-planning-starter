@@ -14,4 +14,23 @@ To accomplish this, you will implement:
 * Path and Trajectory generation using Cubic Spirals
 * Best trajectory selection though a cost function evaluation. This cost function will mainly perform a collision check and a proximity check to bring cost higher as we get closer or collide with objects but maintaining a bias to stay closer to the lane center line.
 
+## Result
+Simulation output in different scenarios:
 
+### Follow lane
+
+![](results/result1.jpg)
+
+![](results/result2.jpg)
+
+### Decelerate to stop
+
+![](results/result3.jpg)
+
+### Stopped
+
+![](results/result4.jpg)
+
+### Video
+
+[Output video](results/result_video.mp4)
