@@ -352,7 +352,7 @@ Inputs: v_i - the initial speed in m/s.
 
 double VelocityProfileGenerator::calc_distance(const double& v_i,
                                                const double& v_f,
-                                               const double& a) const {
+                                               const double& a) {
   double d{0.0};
   if (std::abs(a) < DBL_EPSILON) {
     d = std::numeric_limits<double>::infinity();
@@ -362,7 +362,7 @@ double VelocityProfileGenerator::calc_distance(const double& v_i,
     // v_i (initial velocity) to v_f (final velocity) at a constant
     // acceleration/deceleration "a". HINT look at the description of this
     // function. Make sure you handle div by 0
-    d = 0;  // <- Update
+    d = (v_f * v_f - v_i * v_i) / (2 * a);
   }
   return d;
 }
@@ -378,14 +378,14 @@ a - the acceleration in m / s ^ 2.
 */
 double VelocityProfileGenerator::calc_final_speed(const double& v_i,
                                                   const double& a,
-                                                  const double& d) const {
+                                                  const double& d) {
   double v_f{0.0};
   // TODO-calc final speed: Calculate the final distance. HINT: look at the
   // description of this function. Make sure you handle negative discriminant
   // and make v_f = 0 in that case. If the discriminant is inf or nan return
   // infinity
 
-  double disc = 0;  // <- Fix this
+  double disc = v_i * v_i + 2 * a * d;
   if (disc <= 0.0) {
     v_f = 0.0;
   } else if (disc == std::numeric_limits<double>::infinity() ||
